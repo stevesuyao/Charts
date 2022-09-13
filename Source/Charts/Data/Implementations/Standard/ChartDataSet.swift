@@ -423,6 +423,12 @@ open class ChartDataSet: ChartBaseDataSet
         
         return true
     }
+
+    public func replaceSubrange<C>(_ subrange: Swift.Range<Index>, with newElements: C) where C : Collection, Element == C.Element
+    {
+        entries.replaceSubrange(subrange, with: newElements)
+        notifyDataSetChanged()
+    }
     
     @available(*, renamed: "remove(_:)")
     open override func removeEntry(_ entry: ChartDataEntry) -> Bool
